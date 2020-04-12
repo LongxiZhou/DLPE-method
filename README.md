@@ -13,15 +13,21 @@ Longxi Zhou, et al. "A Rapid, Accurate and Machine-agnostic Segmentation and Qua
 ## Usage
 
 ### Download Data
-Download Data from [this Google Drive link](https://drive.google.com/drive/folders/1_-W8HcHpnBS_9Hkz6P5QfE6Gw-pNXxZ7?usp=sharing). Place the folders `datasets/` and `checkpoint/` in the repository folder.
+Download Data from [this Google Drive link](https://drive.google.com/drive/folders/1_-W8HcHpnBS_9Hkz6P5QfE6Gw-pNXxZ7?usp=sharing). Place the folders `datasets/` and `checkpoint/` inside the drive in the repository folder.
 
+### Install Dependencies
+
+Run command
+```
+conda create -n newenv --file requirements.txt
+```
+This will install all the dependencies to run the program. You are free to change ``newenv`` to any name you like for the environment.
 ### Run
 
 Run command
 ```
 python test.py
 ```
-You probably need to install relavant dependencies.
 
 ### Output
 
