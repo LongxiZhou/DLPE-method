@@ -1,0 +1,6 @@
+__pycache__/
+prediction_visualization/
+prediction/
+datasets/
+checkpoint/
+**/*.swp
