@@ -2,5 +2,6 @@ __pycache__/
 prediction_visualization/
 prediction/
 datasets/
+arrays_raw/
 checkpoint/
 **/*.swp

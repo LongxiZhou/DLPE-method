@@ -14,7 +14,7 @@ import scipy.ndimage
 
 import U_net_Model as unm
 
-def main():
+def predict_one():
     from U_net_predict import final_prediction
     from visualize_mask_and_raw import visualize_mask_and_raw_array
     from U_net_predict import f1_score_evaluation
@@ -60,6 +60,7 @@ def main():
     else:
         print("Predicting %s"%(filename))
         pred=final_prediction(image,best_model_fns,threshold=threshold,lung_mask=lung_mask)
+        pred=pred*lung_mask
         np.save(prediction_file,pred)
 
     print("Computing F1 score")
@@ -67,6 +68,47 @@ def main():
     if visualization:
         print("Preparing visualization")
         visualize_mask_and_raw_array(visualization_dir,image,pred,gt_mask)
+def predict_all():
+    from U_net_predict import final_prediction
+    from visualize_mask_and_raw import visualize_mask_and_raw_array
+    from U_net_predict import f1_score_evaluation
 
+    data_root="./arrays_raw"
+    checkpoint_root="./checkpoint/"
+    prediction_root="./prediction/"
+    filenames=os.listdir(data_root)
+    for filename in filenames:
+        noext=os.path.splitext(filename)[0]
+        out_filename="%s-prediction.npz"%(noext)
+        threshold=2
+        best_model_fns={
+            'X':os.path.join(checkpoint_root,"best_model-X.pth"),
+            'Y':os.path.join(checkpoint_root,"best_model-Y.pth"),
+            'Z':os.path.join(checkpoint_root,"best_model-Z.pth")
+        }
+
+        if filename.endswith(".npz"):
+            data_array=np.load(os.path.join(data_root,filename))["example"]
+        elif filename.endswith(".npy"):
+            data_array=np.load(os.path.join(data_root,filename))
+        else:
+            assert False
+        if not os.path.isdir(checkpoint_root):
+            os.mkdir(checkpoint_root)
+        if not os.path.isdir(prediction_root):
+            os.mkdir(prediction_root)
+        if len(data_array.shape)==4:
+            image=data_array[:,:,:,0]
+        elif len(data_array.shape)==3:
+            image=data_array
+        prediction_file=os.path.join(prediction_root,out_filename)
+
+        if os.path.isfile(prediction_file):
+            print("Load from saved prediction file: %s"%(prediction_file))
+            pred=np.load(prediction_file)
+        else:
+            print("Predicting %s"%(filename))
+            pred=final_prediction(image,best_model_fns,threshold=threshold)
+            np.savez(prediction_file,array=pred)
 if __name__=="__main__":
-    main()
+    predict_all()
