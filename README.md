@@ -1,4 +1,14 @@
 # A Rapid, Accurate and Machine-agnostic Segmentation and Quantification Method for CT-scan-based COVID-19 Diagnostics
+## Overview
+
+<div align="center">
+  <img src="./resources/main.png" width="800" height="450">
+</div>
+This repository provides the predicative model described in the paper:
+
+```
+Longxi Zhou, et al. "A Rapid, Accurate and Machine-agnostic Segmentation and Quantification Method for CT-based COVID-19 Diagnosis"
+```
 
 ## Usage
 

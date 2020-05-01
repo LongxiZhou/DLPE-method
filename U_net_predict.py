@@ -56,7 +56,7 @@ def arr_at_each_location(image,direction,loc):
         assert False
     return arr.astype(np.float32)
 
-def get_prediction(unet, direction, image):
+def get_prediction(unet, direction, image,batch_size):
 
     # data_array should be in shape (240, channel, 464, 464)
     step = 16
@@ -67,31 +67,34 @@ def get_prediction(unet, direction, image):
     with torch.no_grad():
         if direction=="X":
             tumor_distribution_prediction=np.zeros([x_size,y_size,z_size])
-            for i in range(0,x_size,1):
-                arr=arr_at_each_location(image,direction,i)
+            for i in range(0,x_size,batch_size):
+                idx_range=range(i,min(i+batch_size,x_size))
+                arr=np.concatenate([arr_at_each_location(image,direction,m) for m in idx_range],axis=0)
                 batch_input=torch.from_numpy(arr).cuda()
                 predict=unet(batch_input)
                 predict=method(predict)
-                predict=predict.cpu().numpy()[0,1,:,:]
-                tumor_distribution_prediction[i,:,:]=predict
+                predict=predict.cpu().numpy()[:,1,:,:]
+                tumor_distribution_prediction[idx_range,:,:]=predict
         elif direction=="Y":
             tumor_distribution_prediction=np.zeros([x_size,y_size,z_size])
-            for i in range(0,y_size,1):
-                arr=arr_at_each_location(image,direction,i)
+            for i in range(0,y_size,batch_size):
+                idx_range=range(i,min(i+batch_size,y_size))
+                arr=np.concatenate([arr_at_each_location(image,direction,m) for m in idx_range],axis=0)
                 batch_input=torch.from_numpy(arr).cuda()
                 predict=unet(batch_input)
                 predict=method(predict)
-                predict=predict.cpu().numpy()[0,1,:,:]
-                tumor_distribution_prediction[:,i,:]=predict
+                predict=predict.cpu().numpy()[:,1,:,:]
+                tumor_distribution_prediction[:,idx_range,:]=predict.transpose([1,0,2])
         elif direction=="Z":
             tumor_distribution_prediction=np.zeros([x_size,y_size,z_size])
-            for i in range(0,z_size,1):
-                arr=arr_at_each_location(image,direction,i)
+            for i in range(0,z_size,batch_size):
+                idx_range=range(i,min(i+batch_size,z_size))
+                arr=np.concatenate([arr_at_each_location(image,direction,m) for m in idx_range],axis=0)
                 batch_input=torch.from_numpy(arr).cuda()
                 predict=unet(batch_input)
                 predict=method(predict)
-                predict=predict.cpu().numpy()[0,1,:,:]
-                tumor_distribution_prediction[:,:,i]=predict
+                predict=predict.cpu().numpy()[:,1,:,:]
+                tumor_distribution_prediction[:,:,idx_range]=predict.transpose([1,2,0])
         else:
             assert False
     
@@ -115,24 +118,24 @@ def f1_score_evaluation(pred,gt, lung_mask, filter_ground_truth=True):  # 2.97 i
             result[k]=0
     return result
 
-def final_prediction(image,best_model_fns,threshold=2,filter_predictions=True,lung_mask=None,direction="all"):
+def final_prediction(image,best_model_fns,threshold=2,filter_predictions=True,lung_mask=None,direction="all",batch_size=32):
     if direction=="all":
         unet=load_model(best_model_fns['X'])
-        x_prediction = get_prediction(unet, 'X', image)
+        x_prediction = get_prediction(unet, 'X', image,batch_size)
         load_model(best_model_fns['Y'])
-        y_prediction = get_prediction(unet, 'Y', image)
+        y_prediction = get_prediction(unet, 'Y', image,batch_size)
         load_model(best_model_fns['Z'])
-        z_prediction = get_prediction(unet, 'Z', image)
+        z_prediction = get_prediction(unet, 'Z', image,batch_size)
         pred = np.array(x_prediction+y_prediction+z_prediction > threshold, 'float32')
     elif direction=="X":
         unet=load_model(best_model_fns['X'])
-        pred = get_prediction(unet, 'X', image)>threshold
+        pred = get_prediction(unet, 'X', image,batch_size)>threshold
     elif direction=="Y":
         unet=load_model(best_model_fns['Y'])
-        pred = get_prediction(unet, 'Y', image)>threshold       
+        pred = get_prediction(unet, 'Y', image,batch_size)>threshold       
     elif direction=="Z":
         unet=load_model(best_model_fns['Z'])
-        pred = get_prediction(unet, 'Z', image)>threshold   
+        pred = get_prediction(unet, 'Z', image,batch_size)>threshold   
     else:
         assert False
     if filter_predictions:
