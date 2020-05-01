@@ -111,4 +111,4 @@ def predict_all():
             pred=final_prediction(image,best_model_fns,threshold=threshold)
             np.savez(prediction_file,array=pred)
 if __name__=="__main__":
-    predict_all()
+    predict_one()
