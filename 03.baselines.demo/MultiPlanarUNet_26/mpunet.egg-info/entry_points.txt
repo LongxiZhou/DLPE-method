@@ -1,0 +1,3 @@
+[console_scripts]
+mp = mpunet.bin.mp:entry_func
+

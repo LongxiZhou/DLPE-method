@@ -1,0 +1,26 @@
+0. Install the MPUnet Package
+
+pip install -e MultiPlanarUNet_26
+
+1. Prepare data in the folder covid19_70_data
+
+	-train
+	| |_ images
+	| |_ labels
+	-val
+	| |_ images
+	| |_ labels
+	-test
+	| |_ images
+	| |_ labels
+
+mp init_project --name test --data_dir ./covid19_70_data
+
+2. Train
+
+mp train
+mp train_fusion
+
+3. Prediction
+
+mp predict

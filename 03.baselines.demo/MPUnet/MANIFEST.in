@@ -1,0 +1,4 @@
+include requirements.txt
+recursive-include
+MultiPlanarUNet/bin/defaults *
+prune resources
