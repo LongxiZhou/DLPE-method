@@ -1,7 +1,7 @@
-__pycache__/
-prediction_visualization/
-prediction/
-datasets/
-arrays_raw/
-checkpoint/
+**/__pycache__/
+01.introductory.demo/prediction_visualization/
+01.introductory.demo/prediction/
+01.introductory.demo/datasets/
+01.introductory.demo/arrays_raw/
+01.introductory.demo/checkpoint/
 **/*.swp
