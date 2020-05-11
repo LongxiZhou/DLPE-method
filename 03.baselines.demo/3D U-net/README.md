@@ -11,7 +11,7 @@ conda create -n 3dunet --file requirements.txt
 ### Pre-processing (transfer npy to h5)
 
 ```
-python pre_process.py
+python preprocessing.py
 ```
 
 
