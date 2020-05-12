@@ -24,4 +24,4 @@ cd 03.baselines.demo/MPUnet
 python prepare_samples.py
 mp predict -f ./test_dataset/images/S1_data.npy.nii.gz --out_dir ./test_pred/ --no_argmax --overwrite
 ```
---no_argmax means output real number `S1_data.npy.nii.gz` is a file name of the normalized array in `.nii` format.
+`--no_argmax` means output real number `S1_data.npy.nii.gz` is a file name of the normalized array in `.nii` format.
