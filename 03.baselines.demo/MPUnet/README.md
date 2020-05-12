@@ -8,11 +8,10 @@ conda create -n test_mp python=3.6
 conda activate test_mp
 ```
 ### Install dependencies
+In the root directory of the repo, run
 ```
 pip install -e 03.baselines.demo/MPUnet/MultiPlanarUNet_26
 ```
-(change tensorflow versions from “2.0.0” to “1.2.0” at the 10-th line and 12-th line in the “requirements.txt” seems won’t cause bug)
-
 ### Run
 ```
 cd 03.baselines.demo/MPUnet

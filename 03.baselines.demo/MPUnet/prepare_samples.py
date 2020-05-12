@@ -14,19 +14,20 @@ patients = os.listdir(top_dict + '/arrays_raw')
 
 for i in range(len(patients)):
 
+    label_holder = np.zeros([512, 512, 512], 'float32')
     patient_id = patients[i]
 
     print('processing:', patient_id)
 
     patient = np.load(top_dict + '/arrays_raw/' + patient_id)  # ../unrescaled
 
-    datas = np.array(patient[:, :, :, 0])
+    datas = np.array(patient[:, :, :])
 
     datas = (datas - np.min(datas)) * 255 / (np.max(datas) - np.min(datas))  # very important
 
     datas = np.stack((datas,) * 3, axis=-1)
 
-    labels = patient[:, :, :, 1]
+    labels = label_holder
 
     datas = np.array(datas).astype(np.uint8)
 

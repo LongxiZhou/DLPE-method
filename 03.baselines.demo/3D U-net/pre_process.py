@@ -13,8 +13,8 @@ test_patient_list =  os.listdir(main_data_path)
 for i in test_patient_list:
 
 	sub = np.load(main_data_path + i)
-	sub_raw_data = sub[:,:,:,0]
-	sub_label = sub[:,:,:,1]
+	sub_raw_data = sub[:,:,:]
+	sub_label = sub[:,:,:] # there is no label when testing
 	train= h5py.File(destin_path+i[0:-4]+'.h5','w')
 	train.create_dataset('raw',data = sub_raw_data)
 	train.create_dataset('label',data = sub_label)
