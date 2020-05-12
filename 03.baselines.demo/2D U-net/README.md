@@ -8,6 +8,7 @@ This subfolder contains code for `2D U-net`.
 The normalized arrays can be got from `./02.our.model/standard/patient_id/time_1/` or
 download from google drive. You need to place them in the directory `03.baselines.demo/2D U-net/datasets/arrays_dir`.
 4. run `test.py`
+5. go to `./03.baselines.demo/2D U-Net/` to see the predictions.
 
 ## Warning
 You need to remove the false positives outside the lungs to get the results in Fig. 4. The lung
