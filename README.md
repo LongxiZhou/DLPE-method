@@ -20,3 +20,5 @@ The trained models of our model and the baseline methods are stored on [Google D
 ## Contact
 
 If you request our training code/simulation model for COVID-19, please contact Prof. Xin Gao at xin.gao@kaust.edu.sa.
+
+test
