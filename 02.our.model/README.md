@@ -1,4 +1,4 @@
-# Hospital Deployable Version
+# Our Model
 
 This is a version of the model for automatically infection region segmentation.
 Although it can process all CT lung scan, if the CT scan has the following parameters, it will perform better: 
@@ -50,6 +50,7 @@ You just delete any file in './standard/patient_id/collected_time/'
 then rerun run predict_all() in predict_dcm.py
 
 
+### How to output infection probabilities? 
 
-
+Change line 129 of U_net_predict.py, from “>threshold” to “/3”.
 
