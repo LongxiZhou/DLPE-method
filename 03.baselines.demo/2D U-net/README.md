@@ -1,8 +1,15 @@
-# 2D Model
-This subfolder contains code for `2D Model`.
+# 2D U-net
+This subfolder contains code for `2D U-net`.
 
-## Train
-The main program for training is `train.py`. You need to specify `TRAIN_DATA_DIR` and `CHECKPOINT_DIR` in the beginning of the file before running `python train.py`.
+## Prediction
+1. The environment is exactly the same with that of “02.our.model”
+2. put the checkpoint into `./03.baselines.demo/2D U-Net/checkpoint_dirs/checkpoint_dir/`
+3. put the normalized arrays into `./03.baselines.demo/2D U-Net/`
+The normalized arrays can be got from `./02.our.model/standard/patient_id/time_1/` or
+download from google drive
+4. run `test.py`
 
-## Test
-The main program for testing is `test.py`. You need to specify `data_root`, which contains the test data, and `model_path`, which contains the path to the trained model. Then you need to run `test.py` to begin testing.
+## Warning
+You need to remove the false positives outside the lungs to get the results in Fig. 4. The lung
+masks are stored in `./02.our.model/standard/patient_id/time_1/` or download from google
+drive.
