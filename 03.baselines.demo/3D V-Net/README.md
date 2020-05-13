@@ -1,10 +1,10 @@
 ## Usage
 
 
-###Description
+### Description
 
 This 3D V-Net is pretty similar to 3D U-Net. Therefore, the codes of 3D V-Net are revised from the 3D U-Net codes.
-The main difference these two ararchitectures contain: 1. Loss function (3D V-Net uses dice loss). 2. 3D V-Net uses the residual block.
+The main difference between these two ararchitectures contains: 1. Loss function (3D V-Net uses dice loss). 2. 3D V-Net uses the residual block.
 These difference are shown in the configuration file (.yaml file).
 
 ### Install Dependencies
