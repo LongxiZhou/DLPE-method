@@ -5,9 +5,10 @@ Although it can process all CT lung scans, if the CT scan has the following para
 ```
 Slice Thickness < 1.5; Pixel Spacing < 1
 ```
-1. Go into `./02.our.model/codes`; make sure the `model_infection` and `model_lung` is placed under this directory. 
+1. Go into `./02.our.model/codes`; make sure the parameter files on Google Drive: `model_infection` and `model_lung` is placed under this directory. 
+Go into `./02.our.model/patients`; make sure the `.dcm` files on Google Drive has been copied here and the file architecture has been remained.
 2. run `prediction_and_visualization.py`
-The program will do the preprocessing for the `.dcm` files and change it to the `.npy` arrays. The program segments the infection and lung and combines them together.
+The program will do the preprocessing for the `.dcm` files and change it to the `.npy` arrays. The program segments the infections and lungs, then combines them together. Each prediction takes ~120 seconds on my laptop.
 3. please go to `./02.our.model/standard/patient_id/time_1/` there is a `time_1_data.npy` which is the array after spatial and signal normalization.
 
 ## Additional Requirements
