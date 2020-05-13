@@ -36,14 +36,16 @@ Now the testing `.npy` files have been changed into the file format for 3D V-Net
 ### Test 3D V-Net
 
 please open `./03.baselines.demo/3D_Vnet/resources/test_config_dice.yaml` 
-line 2 is the model_path, change it to your own directory, e.g.`/home/zhoul0a/Desktop/COVID-19/reports/COVID-19-repo-master/03.baselines.demo/3D V-net/pytorch3dunet/3dunet/best_checkpoint_vnet.pytorch`
-line 40 is the directory saving proprocessed `.h5` files ready for prediction, you must change it to your own directory, e.g. `/home/zhoul0a/Desktop/COVID-19/reports/COVID-19-repo-master/03.baselines.demo/3D V-net/h5files/`
+
+line 2 is the model_path, please change it to your own directory, e.g.`/home/zhoul0a/Desktop/COVID-19/reports/COVID-19-repo-master/03.baselines.demo/3D V-net/pytorch3dunet/3dunet/best_checkpoint_vnet.pytorch`
+
+line 40 is the directory saving proprocessed `.h5` files ready for prediction, please change it to your own directory, e.g. `/home/zhoul0a/Desktop/COVID-19/reports/COVID-19-repo-master/03.baselines.demo/3D V-net/h5files/`
 
 ```
 python pytorch3dunet/predict.py --config resources/test_config_dice.yaml
 ```
 
-The prediction will be saved to the folder containing test sets.
+The predictions will be saved to the folder containing the `.h5` test sets, which is the `"destin_path"` you have specified in `Transfer .npy to .h5 files`.
 
 
 ### Post-processing (transfer h5 to npz for further evaluation)
