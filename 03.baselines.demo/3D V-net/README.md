@@ -23,8 +23,10 @@ pip install SimpleITK
 Checkpoint on Google Drive: `03.baselines.demo/3D_Vnet/pytorch3dunet/3dunet/` please respect the folder structure.
 Data on Google Drive: `CT_scan_spatial_signal_normalized/` paste these normalized `.npy` arrays into `03.baselines.demo/3D_Vnet/arrays_raw/`
 
-### Pre-processing (transfer npy to h5)
-
+### Transfer .npy to .h5 files
+The normalized arrays are in `.npy` format, while 3D V-net takes `.h5` as input. 
+see `./03.baselines.demo/3D V-net/pre_process.py` this file convert normalized arrays into `.h5` format
+In `pre_process.py` you need to change the `"main_data_path"` to the directory of `.npy` and the `"destin_path"` to the directory of `.h5`.
 ```
 cd ./03.baselines.demo/3D_Vnet
 python preprocessing.py
