@@ -29,7 +29,7 @@ see `./03.baselines.demo/3D V-net/pre_process.py` this file convert normalized a
 In `pre_process.py` you need to change the `"main_data_path"` to the directory of `.npy` and the `"destin_path"` to the directory of `.h5`.
 ```
 cd ./03.baselines.demo/3D_Vnet
-python preprocessing.py
+python pre_processing.py
 ```
 Now the testing `.npy` files have been changed into the file format for 3D V-Net, which is in `.h5`
 
