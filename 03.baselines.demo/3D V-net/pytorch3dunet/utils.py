@@ -73,8 +73,8 @@ def load_checkpoint(checkpoint_path, model, optimizer=None):
         name = k[7:]  # remove `module.`
         new_state_dict[name] = v
     # load params
-    model.load_state_dict(new_state_dict)
-    #model.load_state_dict(state['model_state_dict'])
+    #model.load_state_dict(new_state_dict)
+    model.load_state_dict(state['model_state_dict'])
 
     if optimizer is not None:
         optimizer.load_state_dict(state['optimizer_state_dict'])
