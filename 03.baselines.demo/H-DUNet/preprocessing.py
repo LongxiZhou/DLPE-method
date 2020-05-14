@@ -95,16 +95,13 @@ def generate_lungtxt(lung_mask_dir,save_dir):
 def generate_tumortxt(image_path, save_folder):
     if not os.path.exists("data/"+save_folder):
         os.mkdir("data/"+save_folder)
-
     # Generate Livertxt
     if not os.path.exists("data/"+save_folder+'TumorPixels'):
         os.mkdir("data/"+save_folder+'TumorPixels')
-
     for i in range(0,N_TRAINING_SAMPLES):
         livertumor, header = load(image_path+'segmentation-'+str(i)+'.nii')
         f = open("data/"+save_folder+"/TumorPixels/tumor_"+str(i)+'.txt','w')
         index = np.where(livertumor==2)
-
         x = index[0]
         y = index[1]
         z = index[2]
@@ -183,18 +180,18 @@ def main2():
     box_txt_dir="xgfy_data_aug/myTrainingDataTxt/box"
     if not os.path.isdir("xgfy_data_aug"):
         os.mkdir("xgfy_data_aug")
+    preprocessing_xgfy(
+        data_dir=data_dir,
+        lung_mask_dir=lung_mask_dir,
+        save_dir=train_dir,
+        mode="train"
+    )
     # preprocessing_xgfy(
     #     data_dir=data_dir,
     #     lung_mask_dir=lung_mask_dir,
-    #     save_dir=train_dir,
-    #     mode="train"
+    #     save_dir=test_dir,
+    #     mode="test"
     # )
-#     preprocessing_xgfy(
-#         data_dir=data_dir,
-#         lung_mask_dir=lung_mask_dir,
-#         save_dir=test_dir,
-#         mode="test"
-#     )
     if not os.path.isdir(train_txt_dir):
         os.mkdir(train_txt_dir)
 

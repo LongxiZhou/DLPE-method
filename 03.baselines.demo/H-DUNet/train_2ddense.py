@@ -219,8 +219,6 @@ def generate_arrays_from_file(batch_size, trainidx, img_list, tumor_list, tumorl
 
 
 def load_fast_files(args):
-    data_dir="/ibex/scratch/projects/c2052/COVID-19/arrays_raw"
-    lung_mask_dir="/ibex/scratch/projects/c2052/COVID-19/arrays_raw_lung_seg"
     train_dir="xgfy_data/myTrainingData"
     test_dir= "xgfy_data/myTestData"
     train_txt_dir="xgfy_data/myTrainingDataTxt"
@@ -347,7 +345,6 @@ def train():
     print('Creating and compiling model...')
     print('-'*30)
 
-
     if args.n_gpus>1:
         print("Using %d GPUs"%(args.n_gpus))
         with tf.device("/cpu:0"):
@@ -358,7 +355,6 @@ def train():
         print("Using single GPU"%(args.n_gpus))
         model = DenseUNet(reduction=0.5)
         model.load_weights(args.model_weight, by_name=True)
-
 
     sgd = SGD(lr=1e-3, momentum=0.9, nesterov=True)
     model.compile(optimizer=sgd, loss=[weighted_crossentropy_2ddense])
@@ -416,6 +412,7 @@ def get_files():
     aug_dir="xgfy_data/myTrainingData"
     volume_paths+=glob.glob(os.path.join(aug_dir,"*_3_volume.npy"))
     return volume_paths
+
 def test_generator():
     trainidx, img_list, tumor_list, tumorlines, liverlines, tumoridx, liveridx, minindex_list, maxindex_list = load_fast_files(args)
     slices_per_slide=250
@@ -424,55 +421,30 @@ def test_generator():
     it=generate_arrays_from_file(args.batch_size, trainidx, img_list, tumor_list, tumorlines, liverlines, tumoridx,
                                                     liveridx, minindex_list, maxindex_list,steps_per_epoch)
     x,y=next(it)
+
 def predict():
     from lib.custom_layers import Scale
     test_arr_dir="/ibex/scratch/projects/c2052/COVID-19/arrays_raw"
-    test_list=[
-        'xgfy-A000028_2020-02-29.npy', 
-        'xgfy-B000146_2020-01-30.npy',
-        'xgfy-A000030_2020-02-21.npy',
-        'xgfy-A000050_2020-03-05.npy',
-        'xgfy-A000022_2020-03-02.npy',
-        'xgfy-B000140_2020-02-20.npy',
-        'xgfy-B000108_2020-02-15.npy',
-        'xgfy-A000061_2020-03-03.npy',
-        'xgfy-B000123_2020-03-01.npy',
-        'xgfy-A000028_2020-02-25.npy',
-        'xgfy-A000042_2020-03-02.npy',
-        'xgfy-B000112_2020-02-15.npy',
-        'xgfy-B000133_2020-03-15.npy',
-        'xgfy-A000038_2020-02-26.npy',
-        'xgfy-A000030_2020-03-04.npy',
-        'xgfy-A000015_2020-03-03.npy',
-        'xgfy-B000122_2020-03-14.npy',
-        'xgfy-A000069_2020-02-02.npy',
-    ]
     model_file="./Experiments/model/weights.07-0.16.hdf5"
-    # if args.n_gpus>1:
-    #     print("Using %d GPUs"%(args.n_gpus))
-    #     with tf.device("/cpu:0"):
-    #         model = DenseUNet(reduction=0.5)
-    #     model.load_weights(model_file, by_name=True)
-    #     model=keras.utils.multi_gpu_model(model, gpus=args.n_gpus, cpu_merge=True, cpu_relocation=False)
-    # else:
-    #     print("Using single GPU"%(args.n_gpus))
-    #     model = DenseUNet(reduction=0.5)
-    #     model.load_weights(model_file,by_name=True)
     model=keras.models.load_model(
         model_file,
         custom_objects={'Scale':Scale},
-        compile=False
+        compile=False\
     )
     prediction_dir="prediction-aug"
     # TODO
-    for fn in test_list:
+    for fn in os.listdir(test_arr_dir):
         print(fn)
         array=np.load(os.path.join(test_arr_dir,fn))
-        image=array[:,:,:,0]
-        gt=array[:,:,:,1]
+        if len(array.shape)==3:
+            image=array
+        elif len(array.shape)==4:
+            image=array[:,:,:,0]
+            gt=array[:,:,:,1]
         pred_prob,pred_mask=get_prediction(model,image,batch_size=args.batch_size)
         lung_mask=np.ones_like(image)
-        f1_score_evaluation(pred_mask,gt, lung_mask, filter_ground_truth=True)
+        if len(array.shape)==4:
+            f1_score_evaluation(pred_mask,gt, lung_mask, filter_ground_truth=True)
         np.save(os.path.join(prediction_dir,"pred_prob-%s"%(fn)),pred_prob)
         np.save(os.path.join(prediction_dir,"pred_mask-%s"%(fn)),pred_mask)
 if __name__ == '__main__':
