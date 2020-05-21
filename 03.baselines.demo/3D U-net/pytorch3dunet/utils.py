@@ -60,11 +60,6 @@ def load_checkpoint(checkpoint_path, model, optimizer=None):
     Returns:
         state
     """
-
-
-    if not os.path.exists(checkpoint_path):
-        checkpoint_path = os.getcwd() + '/pytorch3dunet/3dunet/3dunet.pytorch'
-        print('checkpoint_path:', checkpoint_path)
     if not os.path.exists(checkpoint_path):
         raise IOError(f"Checkpoint '{checkpoint_path}' does not exist")
 

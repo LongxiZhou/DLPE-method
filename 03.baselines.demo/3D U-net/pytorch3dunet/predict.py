@@ -4,9 +4,10 @@ import os
 import torch
 import torch.nn as nn
 
-from pytorch3dunet.datasets.hdf5 import get_test_loaders
+#from pytorch3dunet.datasets.hdf5 import get_test_loaders
 #from pytorch3dunet.unet3d import utils
 import utils
+import hdf5
 from pytorch3dunet.unet3d.config import load_config
 from pytorch3dunet.unet3d.model import get_model
 
@@ -35,7 +36,7 @@ def _get_predictor(model, loader, output_file, config):
     predictor_config = config.get('predictor', {})
     class_name = predictor_config.get('name', 'StandardPredictor')
 
-    m = importlib.import_module('pytorch3dunet.unet3d.predictor')
+    m = importlib.import_module('predictor')
     predictor_class = getattr(m, class_name)
 
     return predictor_class(model, loader, output_file, config, **predictor_config)
@@ -65,7 +66,7 @@ def main():
         param_count += param.view(-1).size()[0]
     logger.info(f"parmeter {param_count}!!!!!!!!!!!!!!!!!!!!")
     logger.info('Loading HDF5 datasets...')
-    for test_loader in get_test_loaders(config):
+    for test_loader in hdf5.get_test_loaders(config):
         logger.info(f"Processing '{test_loader.dataset.file_path}'...")
 
         output_file = _get_output_file(test_loader.dataset)
