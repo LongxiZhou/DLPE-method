@@ -3,7 +3,7 @@
 ### Install Dependencies
 
 ```
-conda create --name 3d_unet --file environment.txt
+conda create --name 3d_unet --file ./03.baselines.demo/3D\ U-net/environment.txt
 source activate 3d_unet
 pip install nibabel
 pip install opencv-python
