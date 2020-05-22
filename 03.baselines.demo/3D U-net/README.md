@@ -11,29 +11,33 @@ pip install pydicom
 pip install SimpleITK
 ```
 
+Some new folders need to be created.
+
+```
+mkdir ./03.baselines.demo/3D\ U-net/arrays_raw/
+mkdir ./03.baselines.demo/3D\ U-net/pytorch3dunet/data/
+mkdir ./03.baselines.demo/3D\ U-net/pytorch3dunet/predict_h5/
+mkdir ./03.baselines.demo/3D\ U-net/pytorch3dunet/predict_npz/
+```
+
 ### Data and Checkpoint
 
-Checkpoint on Google Drive: `03.baselines.demo/3D_Unet/pytorch3dunet/3dunet/` paste this checkpoint file `3d_unet_checkpoint.pytorch` into `03.baselines.demo/3D_Unet/pytorch3dunet/`
-Data on Google Drive: `CT_scan_spatial_signal_normalized/` paste these normalized `.npy` arrays into `03.baselines.demo/3D_Unet/arrays_raw/`
+Checkpoint on Google Drive: `03.baselines.demo/3D_Unet/pytorch3dunet/3dunet/` paste this checkpoint file `3d_unet_checkpoint.pytorch` into `03.baselines.demo/3D U-net/pytorch3dunet/`
+
+Data on Google Drive: `CT_scan_spatial_signal_normalized/` paste these normalized `.npy` arrays into `03.baselines.demo/3D U-net/arrays_raw/`
 
 ### Transfer .npy to .h5 files
 
-Firstly, some new folders need to be created.
 
-```
-mkdir ./03.baselines.demo/3D_Unet/pytorch3dunet/data/
-mkdir ./03.baselines.demo/3D_Unet/pytorch3dunet/predict_h5/
-mkdir ./03.baselines.demo/3D_Unet/pytorch3dunet/predict_npz/
-```
 
 The normalized arrays are in `.npy` format, while 3D U-net takes `.h5` as input. 
 
 see `./03.baselines.demo/3D U-net/pre_process.py` this file convert normalized arrays into `.h5` format
 
-The output h5 files will be put into `./03.baselines.demo/3D U-net/pytorch3dunet/data/`
+The output h5 files will be put into `./03.baselines.demo/3D\ U-net/pytorch3dunet/data/`
 
 ```
-cd ./03.baselines.demo/3D_Unet/
+cd ./03.baselines.demo/3D\ U-net/
 python pre_process.py
 ```
 Now the testing `.npy` files have been changed into the file format for 3D Unet, which is in `.h5`
