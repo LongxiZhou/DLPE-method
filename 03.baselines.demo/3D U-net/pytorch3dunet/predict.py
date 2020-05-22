@@ -15,7 +15,10 @@ logger = utils.get_logger('UNet3DPredict')
 
 
 def _get_output_file(dataset, suffix='_predictions'):
-    return f'{os.path.splitext(dataset.file_path)[0]}{suffix}.h5'
+    s = os.path.splitext(dataset.file_path)[0]
+    name = s.split('/')[-1]
+    path = './predict_h5/'+ name
+    return f'{path}{suffix}.h5'
 
 
 def _get_dataset_names(config, number_of_datasets, prefix='predictions'):
@@ -74,7 +77,15 @@ def main():
         predictor = _get_predictor(model, test_loader, output_file, config)
         # run the model prediction on the entire dataset and save to the 'output_file' H5
         predictor.predict()
-
+		
+    path = './predict_h5/'
+    output_path = './predict_npz/'
+    datalist = os.listdir(path)
+    for i in datalist:
+        file = h5py.File(path + i,'r')
+        ar = file['predictions'][1,:,:,:]
+        new_ar = np.exp(ar) / np.sum(np.exp(file['predictions']), axis=0)
+        np.savez(output_path+i[0:-4]+'.npz',prediction = new_ar)
 
 if __name__ == '__main__':
     main()

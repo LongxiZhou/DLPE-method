@@ -10,10 +10,10 @@ from pytorch3dunet.unet3d.config import load_config
 from pytorch3dunet.unet3d.losses import get_loss_criterion
 from pytorch3dunet.unet3d.metrics import get_evaluation_metric
 from pytorch3dunet.unet3d.model import get_model
-from pytorch3dunet.unet3d.trainer import UNet3DTrainer
+#from pytorch3dunet.unet3d.trainer import UNet3DTrainer
 from pytorch3dunet.unet3d.utils import get_logger, get_tensorboard_formatter
 from pytorch3dunet.unet3d.utils import get_number_of_learnable_parameters
-
+import trainer
 logger = get_logger('UNet3DTrain')
 
 
@@ -46,7 +46,7 @@ def _create_trainer(config, model, optimizer, lr_scheduler, loss_criterion, eval
                                              skip_train_validation=skip_train_validation)
     else:
         # start training from scratch
-        return UNet3DTrainer(model, optimizer, lr_scheduler, loss_criterion, eval_criterion,
+        return trainer.UNet3DTrainer(model, optimizer, lr_scheduler, loss_criterion, eval_criterion,
                              config['device'], loaders, trainer_config['checkpoint_dir'],
                              max_num_epochs=trainer_config['epochs'],
                              max_num_iterations=trainer_config['iters'],
