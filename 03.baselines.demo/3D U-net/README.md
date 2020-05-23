@@ -3,12 +3,9 @@
 ### Install Dependencies
 
 ```
-conda create --name 3d_unet --file ./03.baselines.demo/3D\ U-net/environment.txt
+conda create -n 3d_unet -c conda-forge -c awolny python=3.7 pytorch-3dunet
 source activate 3d_unet
-pip install nibabel
-pip install opencv-python
-pip install pydicom
-pip install SimpleITK
+
 ```
 
 Some new folders need to be created.
