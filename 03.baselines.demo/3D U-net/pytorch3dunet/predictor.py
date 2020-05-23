@@ -6,8 +6,8 @@ import numpy as np
 import torch
 from sklearn.cluster import MeanShift
 
-from pytorch3dunet.datasets.hdf5 import SliceBuilder
-from pytorch3dunet.unet3d.utils import get_logger
+from hdf5 import SliceBuilder
+from utils import get_logger
 from utils import unpad
 
 logger = get_logger('UNet3DPredictor')
