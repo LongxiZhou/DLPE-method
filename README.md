@@ -2,7 +2,7 @@
 ## Overview
 
 <div align="center">
-  <img src="./resources/main.png" width="800" height="450">
+  <img src="./resources/Fig_one.png" width="800" height="847">
 </div>
 This repository provides the predictive model described in the paper:
 
