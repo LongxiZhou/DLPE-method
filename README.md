@@ -13,7 +13,6 @@ Longxi Zhou, et al. "Seeing the Unseen: Discovering Interpretable Sub-Visual Abn
 ## Contents
 - 01.introductory.demo contains and example prediction of our model
 - 02.our.model contains our full-fledged model
-- 03.baselines.demo contains code for baselines
 
 The trained models of our model and the baseline methods are stored on [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing). Please respect the folder structure in the drive when downloading. 
 
