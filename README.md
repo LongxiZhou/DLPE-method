@@ -1,4 +1,4 @@
-# A Rapid, Accurate and Machine-agnostic Segmentation and Quantification Method for CT-scan-based COVID-19 Diagnostics
+# (TODO) Seeing the Unseen: Discovering Interpretable Sub-Visual Abnormalities in CT Scans of COVID-19 Patients and Survivors by Deep Learning
 ## Overview
 
 <div align="center">
@@ -7,7 +7,7 @@
 This repository provides the predictive model described in the paper:
 
 ```
-Longxi Zhou, et al. "A Rapid, Accurate and Machine-agnostic Segmentation and Quantification Method for CT-based COVID-19 Diagnosis"
+Longxi Zhou, et al. "Seeing the Unseen: Discovering Interpretable Sub-Visual Abnormalities in CT Scans of COVID-19 Patients and Survivors by Deep Learning"
 ```
 
 ## Contents
@@ -15,15 +15,14 @@ Longxi Zhou, et al. "A Rapid, Accurate and Machine-agnostic Segmentation and Qua
 - 02.our.model contains our full-fledged model
 - 03.baselines.demo contains code for baselines
 
-The trained models of our model and the baseline methods are stored on [Google Drive](https://drive.google.com/drive/folders/1_-W8HcHpnBS_9Hkz6P5QfE6Gw-pNXxZ7?usp=sharing). Please respect the folder structure in the drive when downloading. 
+The trained models of our model and the baseline methods are stored on [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing). Please respect the folder structure in the drive when downloading. 
 
 ### Example Data on the Google Drive:
-The data for `02.our.model` is in in `02.our.model/patients/`. Our method will preprocessing these files, predict, and visualize the infection segmentations.
-The data for models in `03.baselines.demo` is in `CT_scan_spatial_signal_normalized/`, which are same arrays with arrays stored in `./02.our.model/standard/patient_id/time_point/` after the preprocessing. Read the `readme` files for these comparisions for detailed information.
-The `Lung_segmentation_mask/` stores the lung_masks for the scans: 1 means inside lungs, 0 means outside lungs. All methods used the same lung masks to exclude false-positives when we did the quatitative analysis.
+The data for `02.our.model` is in in `02.our.model/patients/`. Our method will preprocessing these files, predict, enhance and visualize the final effects.
+Read the `readme` files for these comparisions for detailed information.
 
 ## Contact
 
-If you request our training code/simulation model for COVID-19, please contact Prof. Xin Gao at xin.gao@kaust.edu.sa.
+If you request our training code for DLPE method, please contact Prof. Xin Gao at xin.gao@kaust.edu.sa.
 
 test
