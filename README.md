@@ -22,7 +22,7 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 - Step 6): Run 'interface/dcm_to_enhanced.py'.
 
 ## Time and Memory Complexity
-- DLPE method Need GPU ram >= 6 GB and CPU ram >= 24 GB.
+- DLPE method requires GPU ram >= 6 GB and CPU ram >= 24 GB.
 - Enhancing one chest CT scan needs about two minutes on one V100 GPU. 
 
 ## Contact
