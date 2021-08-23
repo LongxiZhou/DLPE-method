@@ -15,7 +15,7 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 
 ## Run DLPE method
 - Step 1): Download the file: "trained_models" and "example_data" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing).
-- Step 2): Dowload the source codes in github or Google Drive (note in github, "trained_models" and "example_data" are empty files).
+- Step 2): Dowload the source codes from github (note in github, "trained_models" and "example_data" are empty files).
 - Step 3): Replace the "trained_models" and "example_data" with Google Drive downloaded.
 - Step 4): Establish the python environment by 'resources/req.txt'.
 - Step 5): Open 'interface/dcm_to_enhanced.py', follow the instructions to change global parameters "trained_model_top_dict", "dcm_directory" and "enhance_array_output_directory".
