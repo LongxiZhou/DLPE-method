@@ -113,8 +113,9 @@ def remove_airway_and_blood_vessel_based_on_upper_frontal(rescaled_ct, lung_mask
 
 
 def remove_airway_and_blood_vessel_general_sampling(rescaled_ct, lung_mask=None, airway=None, blood_vessel=None,
-                                                    extend_ratio=1.1, max_diameter=50, show_stl=False, parenchyma_value=False):
+                                                    extend_ratio=1.1, max_diameter=50, show_stl=False, parenchyma_value=False, window=False):
     """
+    :param window: if True, return the scan optimal window
     :param rescaled_ct: the [512, 512, 512] spatial and signal normalized data
     :param lung_mask: we will predict if it is None
     :param airway: the airway mask, we will predict if it is None
@@ -155,7 +156,7 @@ def remove_airway_and_blood_vessel_general_sampling(rescaled_ct, lung_mask=None,
     rescaled_ct_original = np.array(rescaled_ct)
 
     assert extend_ratio > 1
-    print("extending air way")
+    print("extending air way and blood vessels")
     visible_extended_outer = extend_functions.extend_tubes(visible_non_infection, None, extend_ratio + 0.1,
                                                            int(max_diameter * 1.1))
     visible_extended = extend_functions.extend_tubes(visible_non_infection, None, extend_ratio, max_diameter)
@@ -176,6 +177,8 @@ def remove_airway_and_blood_vessel_general_sampling(rescaled_ct, lung_mask=None,
     percentile = 50
     threshold = context[total_points - int(num_context_points * (100 - percentile) / 100)] - 10
 
+    std = np.std(context[total_points - int(num_context_points * 0.9): total_points - int(num_context_points * 0.1)])
+
     print("the context is:", threshold, 'at percentile', percentile)
 
     rescaled_ct[np.where(visible_non_infection >= 0.5)] = threshold  # removed the airway and blood vessel
@@ -187,7 +190,10 @@ def remove_airway_and_blood_vessel_general_sampling(rescaled_ct, lung_mask=None,
     enhanced_array = np.clip(enhanced_array, -0.05, 0.25)
 
     if parenchyma_value:
-        return enhanced_array, parenchyma_value
+        return enhanced_array, threshold
+
+    if window:
+        return enhanced_array, -600 + threshold * 1600, std * 1.5 * 1600
 
     return enhanced_array
 
