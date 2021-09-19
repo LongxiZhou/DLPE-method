@@ -23,7 +23,13 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 
 ## Time and Memory Complexity
 - DLPE method requires GPU ram >= 6 GB and CPU ram >= 24 GB.
-- Enhancing one chest CT scan needs about two minutes on one V100 GPU. 
+- Enhancing one chest CT scan needs about two minutes on one V100 GPU.
+
+## Reproduce Our Follow-up Results
+- Step 1): Open "Reproduce Follow-up Dataset/rescaled_ct_compressed/" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing). All normalized follow-up CT scans are stored here. Each normalized scan is a 'float32' numpy array with shape (512, 512, 512).
+- Step 2): Load one of these normalized scan.
+- Step 3): Open 'interface/dcm_to_enhanced.py', see line 22. Change the "rescaled_ct_array" with what you loaded in Step 2).
+- Step 4): Run the following part of 'interface/dcm_to_enhanced.py'. You will get the enhanced arrays used in our study. You may also check the segmentations for lungs, airways and blood vessels, e.g. visualize them in 3D stl. Many hospitals already used our models to segment airways and blood vessels for operations.
 
 ## Contact
 If you request our training code for DLPE method, please contact Prof. Xin Gao at xin.gao@kaust.edu.sa.
