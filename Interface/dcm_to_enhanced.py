@@ -32,8 +32,14 @@ blood_vessel_mask = predictor.get_prediction_blood_vessel(rescaled_ct_array, lun
                                                           refine_blood_vessel=False)
 # refine_blood_vessel will leave one connected component (discard around 2% predicted positives) and cost about 60 sec.
 
-DLPE_enhanced = enhancement.remove_airway_and_blood_vessel_general_sampling(rescaled_ct_array, lung_mask, airway_mask,
-                                                                            blood_vessel_mask)
+DLPE_enhanced, w_l, w_w = enhancement.remove_airway_and_blood_vessel_general_sampling(rescaled_ct_array, lung_mask, airway_mask,
+                                                                            blood_vessel_mask, window=True)
+w_l = round(w_l)  # the optimal window level for observing sub-visual parenchyma lesions
+w_w = round(w_w)  # the window width for observing sub-visual parenchyma lesions
+print("\n\n#############################################")
+print("the scan level optimal window level is:", w_l, "(HU)")
+print("recommend window width is:", w_w, "(HU)")
+print("#############################################\n\n")
 
 example_slice = visualize.generate_slice(rescaled_ct_array, DLPE_enhanced, airway_mask, blood_vessel_mask,
                                          slice_z=250, show=True)
