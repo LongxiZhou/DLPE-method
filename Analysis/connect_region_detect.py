@@ -5,7 +5,7 @@ the connected component. The value of the dict is lists of locations like {1: [(
 """
 import numpy as np
 import Tool_Functions.Functions as Functions
-import analysis.connected_region2d_and_scale_free_stat as rim_detect
+import Analysis.connected_region2d_and_scale_free_stat as rim_detect
 
 np.set_printoptions(precision=10, suppress=True)
 epsilon = 0.001
