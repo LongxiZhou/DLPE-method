@@ -1,8 +1,9 @@
 import post_processing.parenchyma_enhancement as enhancement
 import prediction.predict_rescaled as predictor
-import format_convert.dcm_np_converter as normalize
-import interface.visualize_example as visualize
+import Format_convert.dcm_np_converter as normalize
+import Interface.visualize_example as visualize
 import Tool_Functions.Functions as Functions
+import torch
 
 """
 each chest CT needs about one minute to be enhanced on one V100 GPU.
