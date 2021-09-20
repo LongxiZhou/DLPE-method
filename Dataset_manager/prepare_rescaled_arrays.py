@@ -1,6 +1,6 @@
 import Tool_Functions.Functions as Functions
-import format_convert.spatial_normalize as normalize
-import format_convert.dcm_np_converter as converter
+import Format_convert.spatial_normalize as normalize
+import Format_convert.dcm_np_converter as converter
 import Tool_Functions.id_time_generator as generator
 import os
 import numpy as np
