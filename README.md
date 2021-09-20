@@ -30,7 +30,7 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 - Step 2): Load one of these normalized scan.
 - Step 3): Open 'interface/dcm_to_enhanced.py', see line 22. Change the "rescaled_ct_array" with what you loaded in Step 2).
 - Step 4): Run the following part of 'interface/dcm_to_enhanced.py'. You will get the enhanced arrays used in our study. You may also check the segmentations for lungs, airways and blood vessels, e.g. visualize them in 3D stl. Many hospitals already used our models to segment airways and blood vessels for operations.
-- All expected outputs including lung masks, airway masks, blood vessel masks and the enhanced arrays for follow-up CT are stored in "Reproduce Follow-up Dataset/expected_outputs/" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing).
+- All expected outputs including lung masks, airway masks, blood vessel masks and the enhanced arrays for follow-up CT are stored in "Reproduce Follow-up Dataset/expected_outputs/" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing). "Reproduce Follow-up Dataset/visualize_chest_tisse_seg/" stores the 2D semantic map for lungs (green), airways (blue) and blood vessels (red).
 
 ## Contact
 If you request our training code for DLPE method, please contact Prof. Xin Gao at xin.gao@kaust.edu.sa.
