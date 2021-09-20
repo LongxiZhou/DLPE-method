@@ -8,12 +8,12 @@ mha -> npy
 npy -> mha
 npy spatial rescaled -> npy spatial unrescaled  (convert standard shape and resolution to original ones)
 """
-import format_convert.read_in_CT as read_in_CT
+import Format_convert.read_in_CT as read_in_CT
 from medpy import io
 import SimpleITK as si
 import numpy as np
 import Tool_Functions.Functions as Functions
-import format_convert.spatial_normalize as spatial_normalize
+import Format_convert.spatial_normalize as spatial_normalize
 import pydicom
 import os
 
