@@ -39,5 +39,8 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 ## Contact
 If you request our training code for DLPE method, please contact Prof. Xin Gao at xin.gao@kaust.edu.sa.
 
+## Cite:
+[![DOI](https://zenodo.org/badge/398192728.svg)](https://zenodo.org/badge/latestdoi/398192728)
+
 ## License
 [BSD 3-Clause "New" or "Revised" license](https://github.com/LongxiZhou/DLPE-method/blob/master/LICENSE)
