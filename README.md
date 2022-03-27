@@ -1,4 +1,4 @@
-# Seeing the Unseen: Discovering Interpretable Sub-Visual Abnormalities in CT Scans of COVID-19 Patients and Survivors by Deep Learning
+# An Interpretable Deep Learning Workflow for Discovering Sub-Visual Abnormalities in CT Scans of COVID-19 Inpatients and Survivors
 ## Overview
 This repository provides the method described in the paper:
 ```
