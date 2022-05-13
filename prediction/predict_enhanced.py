@@ -38,7 +38,7 @@ def get_prediction_rescaled_array(rescaled_array, check_point_dict, threshold=No
     for direction in os.listdir(check_point_dict):
         assert len(os.listdir(os.path.join(check_point_dict, direction))) == 1
     print("check_point_dict:", check_point_dict)
-    prediction = three_way_prediction.three_way_predict_binary_class(rescaled_array, check_point_dict, array_info, threshold,
+    prediction = three_way_prediction.three_way_predict_binary_class(rescaled_array, check_point_dict, array_info, None, threshold,
                                                                      batch_size)
     return prediction
 
