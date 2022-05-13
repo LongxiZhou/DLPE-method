@@ -48,3 +48,20 @@ example_slice = visualize.generate_slice(rescaled_ct_array, DLPE_enhanced, airwa
 Functions.image_save(example_slice, enhance_array_output_directory + 'slice image name.png', high_resolution=True)
 
 Functions.save_np_array(enhance_array_output_directory, 'enhanced_ct_name', DLPE_enhanced, compress=True)
+
+#######################################################################
+# Here is the segmentation of sub-visual lesions for COVID-19 survivors.
+# Note the segmentation model only for COVID-19 lesions.
+#######################################################################
+
+import prediction.predict_enhanced as predict_enhanced
+predict_enhanced.top_directory_check_point = trained_model_top_dict
+
+# mask for visible and sub-visual COVID-19 lesions for FOLLOW UP patients
+follow_up_lesions = predict_enhanced.get_invisible_covid_19_lesion_from_enhanced(DLPE_enhanced, follow_up=True)
+
+# mask for visible and sub-visual COVID-19 lesions for FOLLOW UP patients
+inpatient_lesions = predict_enhanced.get_invisible_covid_19_lesion_from_enhanced(DLPE_enhanced, follow_up=False)
+
+# mask for visible COVID-19 lesions described in our TMI paper DOI: 10.1109/TMI.2020.3001810
+visible_lesions = predictor.predict_covid_19_infection_rescaled_array(rescaled_ct_array, lung_mask=lung_mask)
