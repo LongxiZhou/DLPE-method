@@ -2,10 +2,11 @@
 ## Overview
 This repository provides the method described in the paper:
 ```
-Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub-Visual Abnormalities in CT Scans of COVID-19 Inpatients and Survivors"
+Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub-Visual Abnormalities in CT Scans of COVID-19 Inpatients and Survivors", Nature Machine Intelligence, 2022.
 ```
 ## Here You Can Find:
 - Fast and state-of-the-art segmentation models for COVID-19 lesions, lungs, airways and blood vessels.
+- The first segmentation model for COVID-19 sub-visual lesions.
 - A method to remove scan-level bias of chest CT data.
 - A method to calculate the optimal window for observing pulmonary parechyma.
 
