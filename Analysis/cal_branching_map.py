@@ -1,7 +1,7 @@
-import analysis.connected_region2d_and_scale_free_stat as connectivity
+import Analysis.connected_region2d_and_scale_free_stat as connectivity
 import Tool_Functions.Functions as Functions
 import random
-import format_convert.spatial_normalize as normalize
+import Format_convert.spatial_normalize as normalize
 import numpy as np
 import os
 
