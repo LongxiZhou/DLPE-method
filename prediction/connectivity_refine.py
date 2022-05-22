@@ -1,4 +1,4 @@
-import analysis.connect_region_detect as connect_region_detect
+import Analysis.connect_region_detect as connect_region_detect
 import os
 import sys
 import numpy as np
