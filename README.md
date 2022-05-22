@@ -13,7 +13,7 @@ Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub
 
 ### Fast, Accurate and Robust Segmentations:
 <div align="center">
-  <img src="./resources/Supplmentary_Fig4.png" width="800" height="800">
+  <img src="./resources/Supplmentary_Fig4.png" width="400" height="400">
 </div>
 
 ## Description
