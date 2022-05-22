@@ -43,9 +43,9 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 - Step 1): Download the file: "trained_models/" and "example_data/" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing).
 - Step 2): Dowload the source codes from github (note in github, "trained_models/" and "example_data/" are empty files).
 - Step 3): Replace the "trained_models/" and "example_data/" with Google Drive downloaded.
-- Step 4): Establish the python environment by 'resources/req.txt' or 'resources/environment.yml'.
+- Step 4): Establish the python environment by './environment.yml'.
 - Step 5): Open 'dcm_to_enhanced.py', follow the instructions to change global parameters "trained_model_top_dict", "dcm_directory" and "enhance_array_output_directory".
-- Step 6): Run 'interface/dcm_to_enhanced.py'.
+- Step 6): Run './dcm_to_enhanced.py'.
 
 ## Time and Memory Complexity
 - DLPE method requires GPU ram >= 4 GB and CPU ram >= 24 GB.
@@ -54,8 +54,8 @@ Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method
 ## Reproduce Our Follow-up Results
 - Step 1): Open "Reproduce Follow-up Dataset/rescaled_ct_compressed/" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing). All normalized follow-up CT scans are stored here. Each normalized scan is a 'float32' numpy array with shape (512, 512, 512).
 - Step 2): Load one of these normalized scan.
-- Step 3): Open 'interface/dcm_to_enhanced.py', see line 22. Change the "rescaled_ct_array" with what you loaded in Step 2).
-- Step 4): Run the following part of 'interface/dcm_to_enhanced.py'. You will get the enhanced arrays used in our study. You may also check the segmentations for lungs, airways and blood vessels, e.g. visualize them in 3D stl. Many hospitals already used our models to segment airways and blood vessels for operations.
+- Step 3): Open './dcm_to_enhanced.py', see line 24. Change the "rescaled_ct_array" with what you loaded in Step 2).
+- Step 4): Run the following part of './dcm_to_enhanced.py'. You will get the enhanced arrays used in our study. You may also check the segmentations for lungs, airways and blood vessels, e.g. visualize them in 3D stl. Many hospitals already used our models to segment airways and blood vessels for operations.
 - All expected outputs including lung masks, airway masks, blood vessel masks and the enhanced arrays for follow-up CT are stored in "Reproduce Follow-up Dataset/expected_outputs/" from [Google Drive](https://drive.google.com/drive/folders/16ZvZfhqMmuF7wqNPKUOntw2P-Mfx5C4l?usp=sharing). "Reproduce Follow-up Dataset/visualize_chest_tisse_seg/" stores the 2D semantic map for lungs (green), airways (blue) and blood vessels (red).
 
 ## Contact
