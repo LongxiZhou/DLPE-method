@@ -28,7 +28,7 @@ Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub
   <img src="./resources/Extended_Data_Fig2.jpg" width="700" height="700">
 </div>
 <div align="center">
-  <img src="./resources/Extended_Data_Fig8.jpg" width="700" height="700">
+  <img src="./resources/Extended_Data_Fig8.jpg" width="700" height="350">
 </div>
 
 ## Description
