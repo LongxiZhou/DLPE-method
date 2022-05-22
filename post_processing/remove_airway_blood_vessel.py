@@ -5,8 +5,8 @@ import math
 import sys
 sys.path.append('/ibex/scratch/projects/c2052/Lung_CAD_NMI/source_codes')
 import Tool_Functions.Functions as Functions
-import analysis.connected_region2d_and_scale_free_stat as connected_region
-import analysis.connect_region_detect as connect_3d
+import Analysis.connected_region2d_and_scale_free_stat as connected_region
+import Analysis.connect_region_detect as connect_3d
 np.set_printoptions(threshold=np.inf)
 ibex = False
 if not ibex:
