@@ -18,7 +18,7 @@ Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub
 
 ### Remove Scan-level Bias: Same Model, Same Training Protocol, Same Ground Truth, Different Performance!!!
 <div align="center">
-  <img src="./resources/Fig.3.png" width="550" height="700">
+  <img src="./resources/Fig.3.png" width="700" height="700">
 </div>
 
 ## Description
