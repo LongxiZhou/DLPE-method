@@ -11,6 +11,11 @@ Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub
 - A method to calculate the optimal window for observing pulmonary parechyma.
 - A method to quantify good radiomics.
 
+### Fast, Accurate and Robust Segmentations:
+<div align="center">
+  <img src="./resources/Supplmentary_Fig4.png" width="800" height="800">
+</div>
+
 ## Description
 Deep-LungParenchyma-Enhancing (DLPE) is a computer-aided detection (CADe) method for detecting and quantifying pulmonary parenchyma lesions on chest computerized tomography (CT). Using deep-learning, DLPE removes irrelevant tissues other than pulmonary parenchyma, and calculates the scan-level optimal window which enhances parenchyma lesions for dozens of times compared to the lung window. Aided by DLPE, radiologists discovered novel and interpretable lesions from COVID-19 inpatients and survivors, which are previously invisible under the original lung window and have strong predictive power for key COVID-19 clinical metrics and sequelae.
 
