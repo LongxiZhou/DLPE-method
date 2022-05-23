@@ -2,11 +2,13 @@
 ## Overview
 This repository provides the method described in the paper:
 ```
-Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub-Visual Abnormalities in CT Scans of COVID-19 Inpatients and Survivors", Accepted by Nature Machine Intelligence.
+Longxi Zhou, et al. "An Interpretable Deep Learning Workflow for Discovering Sub-Visual Abnormalities in CT Scans of COVID-19 Inpatients and Survivors", Nature Machine Intelligence 2022.
 ```
 
 ## Links:
-- Colab link: https://github.com/LongxiZhou/DLPE-method/blob/master/colab.ipynb  (Note DLPE method requires GPU ram >= 4 GB and CPU ram >= 24 GB, so a free colab account can not hold this.)
+- Colab Link: https://github.com/LongxiZhou/DLPE-method/blob/master/colab.ipynb  (Note DLPE method requires GPU ram >= 4 GB and CPU ram >= 24 GB, so a free colab account can not hold this.)
+- Open Accessed Article: https://www.nature.com/articles/s42256-022-00483-7
+- All Tricks Explained (36 pages for detailed manual for the replication of our study): https://static-content.springer.com/esm/art%3A10.1038%2Fs42256-022-00483-7/MediaObjects/42256_2022_483_MOESM1_ESM.pdf
 
 ## Here You Can Find:
 - Fast and state-of-the-art segmentation models for COVID-19 lesions, lungs, airways and blood vessels.
