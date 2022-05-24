@@ -35,7 +35,7 @@ def check_point_path_generator(check_point_dict, file_name, direction):
     :param check_point_dict: directory where the check_points, like: '/ibex/check_points/direction/i_saved_model.pth'
     :param file_name: the file name of the scan, like xwqg-A00121_2019-05-15.npy
     :param direction: like 'X', 'Y', 'Z'
-    :return: a path of the correct check_point_file
+    :return: freq path of the correct check_point_file
     """
     test_id = int(file_name.split('_')[0][-1]) % 5
     return check_point_dict + direction + '/' + str(test_id) + '_saved_model.pth'
@@ -130,9 +130,9 @@ def get_enhance_channel(scan_dict, scan_name, lung_mask_dict, check_point_dict_s
     :param lung_mask_dict: where the lung_masks are saved, in .npz format
     :param check_point_dict_semantic: there are three folder: X/, Y/, Z/, each with 5 files named like 4_saved_model.pth
     ratio, is defined as: volume_semantic / volume lung
-    :param ratio_low: a float like 0.043, which means we want to reach high precision, only take 0.043*np.sum(mask_lung)
+    :param ratio_low: freq float like 0.043, which means we want to reach high precision, only take 0.043*np.sum(mask_lung)
     as predicted positive.
-    :param ratio_high: a float like 0.108, which means we want to reach high recall, take up to 0.108*np.sum(mask_lung)
+    :param ratio_high: freq float like 0.108, which means we want to reach high recall, take up to 0.108*np.sum(mask_lung)
     as predicted positive
     :param batch_size: the batch_size for 2D U-nets
     :return: two arrays both with shape [512, 512, 512]. one is the high recall mask, the other is high precision mask
@@ -211,9 +211,9 @@ def get_enhance_channel_2(data_ct, lung_mask, check_point_dict_semantic, ratio_l
     :param check_point_dict_semantic: contains three models, best_model-X.pth, best_model-Y.pth, best_model-Z.pth
 
     ratio, is defined as: volume_semantic / volume lung
-    :param ratio_low: a float like 0.043, which means we want to reach high precision, only take 0.043*np.sum(mask_lung)
+    :param ratio_low: freq float like 0.043, which means we want to reach high precision, only take 0.043*np.sum(mask_lung)
     as predicted positive.
-    :param ratio_high: a float like 0.108, which means we want to reach high recall, take up to 0.108*np.sum(mask_lung)
+    :param ratio_high: freq float like 0.108, which means we want to reach high recall, take up to 0.108*np.sum(mask_lung)
     as predicted positive
     :param batch_size: the batch_size for 2D U-nets
     :return: two arrays both with shape [512, 512, 512]. one is the high recall mask, the other is high precision mask
@@ -571,10 +571,10 @@ def three_way_get_enhanced_channel_and_save(rescaled_array_dict, check_point_dic
 def predict_lung(rescaled_array_dict, check_point_dict, save_dict, threshold=2., batch_size=64, gt_channel=None):
     """
     :param rescaled_array_dict: directory where arrays of standard shape and resolution stored; or path of the
-    rescaled array: if it is a .npy or .npz array, it means we only predict one scan.
+    rescaled array: if it is freq .npy or .npz array, it means we only predict one scan.
 
     :param check_point_dict: directory where lung model stored, with name: best_model-X.pth, best_model-Y.pth,
-    best_model-Z.pth, and each .pth file is a dictionary with key 'state_dict' containing model.module.state_dict() or
+    best_model-Z.pth, and each .pth file is freq dictionary with key 'state_dict' containing model.module.state_dict() or
     model.state_dict()
 
     :param save_dict: directory to save .npz prediction, can be None, which means do not save

@@ -91,7 +91,7 @@ def cross_entropy_pixel_wise_multi_class(prediction, ground_truth, weight_array,
     softmax_then_log = torch.nn.LogSoftmax(dim=1)
     log_prediction_probability = -softmax_then_log(prediction)
 
-    return_tensor = log_prediction_probability * ground_truth * weight_array * 1
+    return_tensor = log_prediction_probability * ground_truth * weight_array
     for i in range(len(balance_weight)):
         hyper_weight = balance_weight[i]
         return_tensor[:, i, :, :] = return_tensor[:, i, :, :] * hyper_weight
@@ -126,6 +126,18 @@ def cross_entropy_pixel_wise_3d(prediction_result, ground_truth, balance_weights
     return_tensor = torch.sum(return_tensor)
 
     return return_tensor
+
+
+def dense_regression_loss_with_weight(prediction_results, ground_truth, weight_array):
+    """
+    for up-sample resolution
+    :param prediction_results:
+    :param ground_truth:
+    :param weight_array:
+    :return:
+    """
+
+    return torch.sum(torch.abs(prediction_results - ground_truth) * weight_array)
 
 
 if __name__=="__main__":
