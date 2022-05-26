@@ -24,7 +24,7 @@ parameters = {
     "balance_weights": None,  # give a bound during training
     "train_data_dir": None,
     "weight_dir": None,
-    "test_data_dir": None,  # use train for test
+    "test_data_dir": None,  # use five-fold test, so the train data dir is the same with the test data dir.
     "checkpoint_dir": None,
     "saved_model_filename": None,
     "device": "cuda:0" if torch.cuda.is_available() else "cpu",
