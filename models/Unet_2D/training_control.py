@@ -28,7 +28,7 @@ parameters = {
     "checkpoint_dir": None,
     "saved_model_filename": None,
     "device": "cuda:0" if torch.cuda.is_available() else "cpu",
-    "test_id": 0,
+    "test_id": 0,  # patient level test. Use the patient-id % 5 == test_id as the test set, others as the training set.
     "wrong_patient_id": [],  # ['xwqg-A00085', 'xwqg-A00121', 'xwqg-B00027', 'xwqg-B00034'],
     "best_f1": None,
     "init_features": 16,
